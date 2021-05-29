@@ -1,0 +1,43 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+    <changeSet author="Lucas-gusmao" id="1" >
+        <createTable tableName="ubs">
+            <column name="id" type="serial">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="varchar()">
+                <constraints nullable="false"/>
+            </column>
+            <column name="adress" type="varchar()">
+                <constraints nullable="false"/>
+            </column>
+            <column name="city" type="varchar()">
+                <constraints nullable="false"/>
+            </column>
+            <column name="phone" type="varchar()">
+                <constraints nullable="false"/>
+            </column>
+            <column name="lon" type="numeric(18, 14)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="lat" type="numeric(18, 14)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="size" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="adaptation_for_seniors" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="medical_equipment" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="medicine" type="int">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>
