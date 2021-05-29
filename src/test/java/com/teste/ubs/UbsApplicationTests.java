@@ -59,8 +59,13 @@ public class UbsApplicationTests {
 	}
 
 
-
 	@Test
+	public void test(){
+		findAll();
+		verifyPageNumber();
+		findByPageAndDistance();
+	}
+
 	public void findAll() {
 		Page<UbsEntity> resultado = ubsRepository.findByDistance(46.0, 23.0, PageRequest.of(0, 20));
 		Assert.assertEquals(resultado.getTotalElements(), 10);
