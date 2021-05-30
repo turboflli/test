@@ -15,6 +15,9 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 @RunWith(SpringRunner.class)
 @AutoConfigurationPackage
 @ContextConfiguration(classes= UbsApplicationTests.class)
@@ -55,6 +58,7 @@ public class UbsApplicationTests {
 		findAll();
 		verifyPageNumber();
 		findByPageAndDistance();
+		verifyPageOfOfBound();
 	}
 
 	public void findAll() {
@@ -64,17 +68,41 @@ public class UbsApplicationTests {
 
 
 	public void verifyPageNumber() {
-		Page<UbsEntity> resultado = ubsRepository.findByDistance(46.0, 23.0, PageRequest.of(0, 5));
+		Page<UbsEntity> resultado = ubsRepository.findByDistance(46.0, 23.0, PageRequest.of(2, 4));
 		Assert.assertEquals(resultado.getTotalElements(), 10);
-		Assert.assertEquals(resultado.getContent().size(), 5);
+		Assert.assertEquals(resultado.getContent().size(), 2);
 	}
 
 
 	public void findByPageAndDistance() {
-		Page<UbsEntity> resultado = ubsRepository.findByDistance(45.59, 23.59, PageRequest.of(1, 3));
+		//1ª page
+		Page<UbsEntity> resultado = ubsRepository.findByDistance(45.59, 23.59, PageRequest.of(0, 3));
+		UbsEntity ubsEncontrada = resultado.getContent().get(0);//1 element
+		Assert.assertEquals(ubsEncontrada.getName(), "ubs 6");
+		ubsEncontrada = resultado.getContent().get(1);//2 element
+		Assert.assertEquals(ubsEncontrada.getName(), "ubs 5");
+		ubsEncontrada = resultado.getContent().get(2);//3 element
+		Assert.assertEquals(ubsEncontrada.getName(), "ubs 7");
+
+		//2ª page
+		resultado = ubsRepository.findByDistance(45.59, 23.59, PageRequest.of(1, 3));
 		Assert.assertEquals(resultado.getTotalElements(), 10);
-		UbsEntity ubsEncontrada = resultado.getContent().get(0);//4 elemento
+		ubsEncontrada = resultado.getContent().get(0);//4 element
 		Assert.assertEquals(ubsEncontrada.getName(), "ubs 8");
+	}
+
+	public void verifyPageOfOfBound() {
+		Page<UbsEntity> resultado = ubsRepository.findByDistance(46.0, 23.0, PageRequest.of(0, 5));
+		Assert.assertEquals(resultado.getTotalElements(), 10);
+		Assert.assertEquals(resultado.getContent().size(), 5);
+		Exception exception = assertThrows(IndexOutOfBoundsException.class, () -> {
+			resultado.getContent().get(5);
+		});
+
+		String expectedMessage = "Index 5 out of bounds for length 5";
+		String actualMessage = exception.getMessage();
+
+		assertTrue(actualMessage.contains(expectedMessage));
 	}
 
 }
