@@ -19,10 +19,10 @@
             <column name="phone" type="varchar()">
                 <constraints nullable="false"/>
             </column>
-            <column name="lon" type="numeric(18, 14)">
+            <column name="lon" type="numeric(24, 14)">
                 <constraints nullable="false"/>
             </column>
-            <column name="lat" type="numeric(18, 14)">
+            <column name="lat" type="numeric(24, 14)">
                 <constraints nullable="false"/>
             </column>
             <column name="size" type="int">

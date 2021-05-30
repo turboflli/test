@@ -119,7 +119,7 @@ public class UbsEntity implements Serializable {
                     " \"lat\" : " + lat +
                     ", \"long\" : " + lon +
                 " } " +
-                " \"score\" : {" +
+                ", \"score\" : {" +
                     " \"size\" : " + size +
                     ", \"adaptation_for_seniors\" : " + adaptation_for_seniors +
                     ", \"medical_equipment\" : " + medical_equipment +
