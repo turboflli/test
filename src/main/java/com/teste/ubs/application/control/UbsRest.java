@@ -25,8 +25,8 @@ public class UbsRest {
                              @RequestParam(required = false, defaultValue = "10", value = "per_page") Integer pageSize){
 
         String[] coordenatesSplited = coordenates.split(",");
-        Double lon = Double.parseDouble(coordenatesSplited[0]);
-        Double lat = Double.parseDouble(coordenatesSplited[1]);
+        Double lon = Double.parseDouble(coordenatesSplited[1]);
+        Double lat = Double.parseDouble(coordenatesSplited[0]);
         if (page < 1) {
             page = 1;
         }
