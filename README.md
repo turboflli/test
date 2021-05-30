@@ -17,4 +17,4 @@ Para subir o projeto rode no terminal
 mvn spring-boot:run
 ``
 
-Para acessar a aplicação  [acesse](localhost:8080/api)
+Para acessar a aplicação  [acesse](http://localhost:8080/api)
