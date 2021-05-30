@@ -2,6 +2,33 @@
 <head>
 </head>
 <body>
-<h1>Hello World<h1>
+    <h4>Hello <h4>
+        <a href="/api/v1/find_ubs?page=1&query=-46.625290,-23.533773">Api to find ubs by distance, type in your browser api/v1/find_ubs, with paramters</a>
+        <table border="2px">
+            <tr>
+                <th>name</th>
+                <th>type</th>
+                <th>meaning</th>
+                <th>required</th>
+            </tr>
+            <tr>
+                <td>query</td>
+                <td>text</td>
+                <td>coordenates like "long,lat"</td>
+                <td>true</td>
+            </tr>
+            <tr>
+                <td>page</td>
+                <td>int, starts from 1</td>
+                <td>number of current page</td>
+                <td>true</td>
+            </tr>
+            <tr>
+                <td>per_page</td>
+                <td>int</td>
+                <td>number of ubs per page</td>
+                <td>false, default value is 10</td>
+            </tr>
+        </table>
 </body>
 </html>

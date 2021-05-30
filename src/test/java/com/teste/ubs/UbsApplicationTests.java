@@ -19,8 +19,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 @AutoConfigurationPackage
 @ContextConfiguration(classes= UbsApplicationTests.class)
 @DataJpaTest
-@TestPropertySource(locations = "/test.properties",
-		properties = "baeldung.testpropertysource.one=other-property-value")
+@TestPropertySource(locations = "/test.properties")
 public class UbsApplicationTests {
 
 	@Autowired
